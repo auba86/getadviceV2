@@ -30,7 +30,7 @@ public class Post {
     @ManyToOne
     @JoinColumn(name="userId", nullable=false)
     @JsonBackReference
-    private User userPost;
+    private User user;
 
     @OneToOne
 //    @MapsId
@@ -77,12 +77,12 @@ public class Post {
         this.comments = comments;
     }
 
-    public User getUserPost() {
-        return userPost;
+    public User getUser() {
+        return user;
     }
 
-    public void setUserPost(User userPost) {
-        this.userPost = userPost;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public Rating getRating() {

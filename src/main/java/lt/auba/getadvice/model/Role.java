@@ -13,7 +13,7 @@ public class Role {
 
     private String description;
 
-    @OneToOne(mappedBy = "userRole", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToOne(mappedBy = "role", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @PrimaryKeyJoinColumn
     private User user;
 

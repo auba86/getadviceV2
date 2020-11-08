@@ -1,0 +1,21 @@
+h1 {
+    color: olivedrab;
+    text-align: center;
+}
+
+.right {
+    text-align: right;
+}
+
+.center {
+    text-align:center;
+}
+
+div {
+    border-block-end-color: olivedrab;
+}
+
+tr {
+    text: darkslategrey;
+    background-color: lightblue;
+}

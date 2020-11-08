@@ -10,12 +10,67 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
           integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 <body>
 <h1>Posts List</h1>
-<a th:href="@{/}" class="btn btn-success btn-sm mb-3"> Back to main page</a>
+<div class="right"><a th:href="@{/}" class="btn btn-success btn-sm mb-3"> Back to main page</a></div>
+<table border="1" class="table table-striped table-responsive-md">
+    <thead>
+    <tr>
+        <th>Post Title</th>
+        <th>Description</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody id="myTable">
+    <tr th:each="post:${postsList}">
+        <td th:text="${post.postTitle}"></td>
+        <td th:text="${post.description}"></td>
+        <td>
+            <a th:href="@{/seeAllComments/{postId}(postId=${post.postId})}" class="btn btn-primary">See Comments</a>
+            <a th:href="@{/addNewComment/(postId=${post.postId}, userId=${post.user.userId})}" class="btn btn-info">Add Comment</a>
+          </td>
+    </tr>
+    </tbody>
+</table>
+
+<!--<table border="1" class="table table-striped table-responsive-md">-->
+<!--    <thead>-->
+
+<!--    </thead>-->
+<!--    <tbody id="myTable" th:each="post:${postsList}">-->
+<!--    <tr th:text="${post.postTitle}"></tr>-->
+<!--    <div>-->
+<!--        <tr th:text="${post.description}"></tr>-->
+<!--    </div>-->
+<!--    </tbody>-->
+<!--</table>-->
+
+<!--<table border="1" class="table table-striped table-responsive-md">-->
+
+<!--    &lt;!&ndash;    <thead>&ndash;&gt;-->
+<!--    &lt;!&ndash;    <tr>&ndash;&gt;-->
+<!--    &lt;!&ndash;        <th>Post Title</th>&ndash;&gt;-->
+<!--    &lt;!&ndash;        &ndash;&gt;-->
+<!--    &lt;!&ndash;    </tr>&ndash;&gt;-->
+<!--    &lt;!&ndash;    <tr>&ndash;&gt;-->
+<!--    &lt;!&ndash;        <th>Post Description</th>&ndash;&gt;-->
+<!--    &lt;!&ndash;    </tr>&ndash;&gt;-->
+<!--    &lt;!&ndash;    </thead>&ndash;&gt;-->
+<!--    <tbody id="myTable">-->
+<!--    <tr th:each="post:${postsList}">-->
+<!--        <td th:text="${post.postTitle}"></td>-->
+<!--        <td th:text="${post.description}"></td>-->
+<!--        &lt;!&ndash;        <td>&ndash;&gt;-->
+<!--        &lt;!&ndash;            <a th:href="@{/newPostForm/{userId}(userId=${user.userId})}" class="btn btn-primary">Add Post</a>&ndash;&gt;-->
+<!--        &lt;!&ndash;        </td>&ndash;&gt;-->
+<!--    </tr>-->
+
+<!--    </tbody>-->
+<!--</table>-->
 </body>
 </html>

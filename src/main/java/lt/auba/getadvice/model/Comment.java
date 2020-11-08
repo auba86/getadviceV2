@@ -14,6 +14,12 @@ public class Comment {
 
     private String description;
 
+    @Transient
+    private Long userId;
+
+    @Transient
+    private Long postId;
+
 //    private Date commentDate;
 
     @ManyToOne
@@ -24,7 +30,7 @@ public class Comment {
     @ManyToOne
     @JoinColumn(name="userId", nullable=false)
     @JsonBackReference
-    private Comment userComment;
+    private User user;
 
     public Long getCommentId() {
         return commentId;
@@ -42,7 +48,23 @@ public class Comment {
         this.description = description;
     }
 
-//    public Date getCommentDate() {
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+
+    public Long getPostId() {
+        return postId;
+    }
+
+    public void setPostId(Long postId) {
+        this.postId = postId;
+    }
+
+    //    public Date getCommentDate() {
 //        return commentDate;
 //    }
 //
@@ -58,11 +80,11 @@ public class Comment {
         this.post = post;
     }
 
-    public Comment getUserComment() {
-        return userComment;
+    public User getUser() {
+        return user;
     }
 
-    public void setUserComment(Comment userComment) {
-        this.userComment = userComment;
+    public void setUser(User user) {
+        this.user = user;
     }
 }

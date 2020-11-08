@@ -40,7 +40,6 @@ public class UserController {
 
     @GetMapping("/showUserLoginForm")
     public String showLoginForm(Model model) {
-        //create model attribute to bind form data
         User user = new User();
         model.addAttribute("user", user);
         return "login";
@@ -55,9 +54,10 @@ public class UserController {
 
     @PostMapping("/saveNewUser")
     public String saveNewUser(@ModelAttribute("user") User user){
+        Role role = new Role();
+        role.setRoleId(1L);
+        user.setRole(role);
         userService.saveUserData(user);
-//        user.setUserRole(1L);
-//        userService.saveUserData(user);
         return "redirect:/";
     }
 

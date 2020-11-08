@@ -20,18 +20,21 @@ public class User {
 
     private String email;
 
-    @OneToMany(mappedBy = "userPost", cascade = CascadeType.ALL)
+    @Transient
+    private Long roleId;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     @JsonManagedReference
     private Set<Post> userPost;
 
-    @OneToMany(mappedBy = "userComment", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     @JsonManagedReference
     private Set<Comment> userComment;
 
     @OneToOne(fetch = FetchType.LAZY)
 //    @MapsId
     @JoinColumn(name = "roleId")
-    private Role userRole;
+    private Role role;
 
     public Long getUserId() {
         return userId;
@@ -89,11 +92,19 @@ public class User {
         this.userComment = userComment;
     }
 
-    public Role getUserRole() {
-        return userRole;
+    public Role getRole() {
+        return role;
     }
 
-    public void setUserRole(Role userRole) {
-        this.userRole = userRole;
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
+    public Long getRoleId() {
+        return roleId;
+    }
+
+    public void setRoleId(Long roleId) {
+        this.roleId = roleId;
     }
 }
